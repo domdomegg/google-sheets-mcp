@@ -18,7 +18,7 @@ const outputSchema = z.object({
 
 export function registerBatchUpdate(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_batch_update',
+		'batch_update',
 		{
 			title: 'Batch update',
 			description: 'Execute multiple spreadsheet operations in a single request. Use for advanced operations like formatting, merging cells, creating filters, conditional formatting, sorting, etc.',

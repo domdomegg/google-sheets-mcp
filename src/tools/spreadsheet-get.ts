@@ -39,7 +39,7 @@ const outputSchema = z.object({
 
 export function registerSpreadsheetGet(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_spreadsheet_get',
+		'spreadsheet_get',
 		{
 			title: 'Get spreadsheet',
 			description: 'Get spreadsheet metadata including title, sheets list, and optionally cell data',

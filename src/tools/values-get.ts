@@ -20,7 +20,7 @@ const outputSchema = z.object({
 
 export function registerValuesGet(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_get',
+		'values_get',
 		{
 			title: 'Get values',
 			description: 'Read cell values from a spreadsheet range',

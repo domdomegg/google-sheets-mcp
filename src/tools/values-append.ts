@@ -32,7 +32,7 @@ const outputSchema = z.object({
 
 export function registerValuesAppend(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_append',
+		'values_append',
 		{
 			title: 'Append values',
 			description: 'Append rows of data after the last row with data in a range',

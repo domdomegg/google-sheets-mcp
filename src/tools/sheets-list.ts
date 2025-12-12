@@ -25,7 +25,7 @@ const outputSchema = z.object({
 
 export function registerSheetsList(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_sheets_list',
+		'sheets_list',
 		{
 			title: 'List sheets',
 			description: 'List all sheets (tabs) in a spreadsheet with their properties',

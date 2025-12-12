@@ -24,7 +24,7 @@ const outputSchema = z.object({
 
 export function registerSpreadsheetCreate(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_spreadsheet_create',
+		'spreadsheet_create',
 		{
 			title: 'Create spreadsheet',
 			description: 'Create a new Google Sheets spreadsheet',
