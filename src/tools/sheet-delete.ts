@@ -16,7 +16,7 @@ const outputSchema = z.object({
 
 export function registerSheetDelete(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_sheet_delete',
+		'sheet_delete',
 		{
 			title: 'Delete sheet',
 			description: 'Delete a sheet (tab) from a spreadsheet',

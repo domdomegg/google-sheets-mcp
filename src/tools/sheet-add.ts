@@ -20,7 +20,7 @@ const outputSchema = z.object({
 
 export function registerSheetAdd(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_sheet_add',
+		'sheet_add',
 		{
 			title: 'Add sheet',
 			description: 'Add a new sheet (tab) to a spreadsheet',

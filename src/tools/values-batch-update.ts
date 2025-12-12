@@ -31,7 +31,7 @@ const outputSchema = z.object({
 
 export function registerValuesBatchUpdate(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_batch_update',
+		'values_batch_update',
 		{
 			title: 'Batch update values',
 			description: 'Write cell values to multiple ranges in a single request',

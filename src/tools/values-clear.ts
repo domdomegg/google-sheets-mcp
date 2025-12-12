@@ -16,7 +16,7 @@ const outputSchema = z.object({
 
 export function registerValuesClear(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_clear',
+		'values_clear',
 		{
 			title: 'Clear values',
 			description: 'Clear cell values from a range (keeps formatting)',

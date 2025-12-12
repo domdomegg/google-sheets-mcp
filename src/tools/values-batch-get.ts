@@ -25,7 +25,7 @@ const outputSchema = z.object({
 
 export function registerValuesBatchGet(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_batch_get',
+		'values_batch_get',
 		{
 			title: 'Batch get values',
 			description: 'Read cell values from multiple ranges in a single request',

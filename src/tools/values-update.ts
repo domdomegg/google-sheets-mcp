@@ -27,7 +27,7 @@ const outputSchema = z.object({
 
 export function registerValuesUpdate(server: McpServer, config: Config): void {
 	server.registerTool(
-		'sheets_values_update',
+		'values_update',
 		{
 			title: 'Update values',
 			description: 'Write cell values to a spreadsheet range (overwrites existing data)',
