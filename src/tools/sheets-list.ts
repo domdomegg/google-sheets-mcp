@@ -3,10 +3,11 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet'),
-};
+}, {});
 
 const sheetSchema = z.object({
 	sheetId: z.number(),

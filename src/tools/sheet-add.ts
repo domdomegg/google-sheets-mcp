@@ -3,14 +3,15 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet'),
 	title: z.string().describe('Title of the new sheet'),
 	index: z.number().optional().describe('The index to insert the sheet at. If not specified, appended to the end.'),
 	rowCount: z.number().optional().describe('Number of rows (default 1000)'),
 	columnCount: z.number().optional().describe('Number of columns (default 26)'),
-};
+}, {});
 
 const outputSchema = z.object({
 	sheetId: z.number(),

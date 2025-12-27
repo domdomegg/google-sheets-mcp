@@ -3,12 +3,13 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet to retrieve'),
 	includeGridData: z.boolean().default(false).describe('Whether to include grid data (cell values). Default false for metadata only.'),
 	ranges: z.array(z.string()).optional().describe('Ranges to return grid data for (e.g., "Sheet1!A1:B10"). Only used if includeGridData is true.'),
-};
+}, {});
 
 const sheetPropertiesSchema = z.object({
 	sheetId: z.number(),
