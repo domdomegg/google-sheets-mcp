@@ -3,13 +3,14 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	title: z.string().describe('Title of the new spreadsheet'),
 	sheets: z.array(z.object({
 		title: z.string().describe('Title of the sheet'),
 	})).optional().describe('Initial sheets to create. If not provided, a default "Sheet1" is created.'),
-};
+}, {});
 
 const outputSchema = z.object({
 	spreadsheetId: z.string(),
@@ -37,7 +38,7 @@ export function registerSpreadsheetCreate(server: McpServer, config: Config): vo
 			};
 
 			if (sheets?.length) {
-				body.sheets = sheets.map((sheet) => ({
+				body.sheets = sheets.map((sheet: {title: string}) => ({
 					properties: {title: sheet.title},
 				}));
 			}

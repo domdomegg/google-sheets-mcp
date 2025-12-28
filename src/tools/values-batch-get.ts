@@ -3,14 +3,15 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet'),
 	ranges: z.array(z.string()).describe('Array of A1 notation ranges to read (e.g., ["Sheet1!A1:D10", "Sheet2!A:A"])'),
 	majorDimension: z.enum(['ROWS', 'COLUMNS']).default('ROWS').describe('Whether to return data as rows or columns'),
 	valueRenderOption: z.enum(['FORMATTED_VALUE', 'UNFORMATTED_VALUE', 'FORMULA']).default('FORMATTED_VALUE').describe('How values should be rendered'),
 	dateTimeRenderOption: z.enum(['SERIAL_NUMBER', 'FORMATTED_STRING']).default('FORMATTED_STRING').describe('How dates should be rendered'),
-};
+}, {});
 
 const valueRangeSchema = z.object({
 	range: z.string(),

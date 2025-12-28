@@ -3,12 +3,13 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet'),
 	requests: z.array(z.record(z.unknown())).describe('Array of Sheets API request objects. See https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets/request for available request types. Common requests include: updateCells, repeatCell, autoFill, cutPaste, copyPaste, mergeCells, unmergeCells, updateBorders, addFilterView, addConditionalFormatRule, sortRange, etc.'),
 	includeSpreadsheetInResponse: z.boolean().default(false).describe('Whether to include the updated spreadsheet in the response'),
-};
+}, {});
 
 const outputSchema = z.object({
 	spreadsheetId: z.string(),

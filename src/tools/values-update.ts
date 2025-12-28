@@ -3,14 +3,15 @@ import type {McpServer} from '@modelcontextprotocol/sdk/server/mcp.js';
 import type {Config} from './types.js';
 import {makeSheetsApiCall} from '../utils/sheets-api.js';
 import {jsonResult} from '../utils/response.js';
+import {strictSchemaWithAliases} from '../utils/schema.js';
 
-const inputSchema = {
+const inputSchema = strictSchemaWithAliases({
 	spreadsheetId: z.string().describe('The ID of the spreadsheet'),
 	range: z.string().describe('The A1 notation of the range to update (e.g., "Sheet1!A1:D10")'),
 	values: z.array(z.array(z.unknown())).describe('The data to write, as a 2D array of values (rows of columns)'),
 	valueInputOption: z.enum(['RAW', 'USER_ENTERED']).default('USER_ENTERED').describe('How input data should be interpreted: RAW (as-is) or USER_ENTERED (parsed like typed in UI, e.g., "=A1+B1" becomes formula)'),
 	includeValuesInResponse: z.boolean().default(false).describe('Whether to include the updated values in the response'),
-};
+}, {});
 
 const outputSchema = z.object({
 	spreadsheetId: z.string(),
