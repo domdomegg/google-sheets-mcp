@@ -1,6 +1,6 @@
 {
   "name": "google-sheets-mcp",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "MCP server for Google Sheets - read, write, and query spreadsheet data",
   "license": "MIT",
   "author": "Adam Jones (domdomegg)",
