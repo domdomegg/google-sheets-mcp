@@ -25,6 +25,11 @@ export function registerBatchUpdate(server: McpServer, config: Config): void {
 			description: 'Execute multiple spreadsheet operations in a single request. Use for advanced operations like formatting, merging cells, creating filters, conditional formatting, sorting, etc.',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: true,
+				idempotentHint: false,
+			},
 		},
 		async ({spreadsheetId, requests, includeSpreadsheetInResponse}) => {
 			const result = await makeSheetsApiCall(

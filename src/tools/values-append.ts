@@ -39,6 +39,11 @@ export function registerValuesAppend(server: McpServer, config: Config): void {
 			description: 'Append rows of data after the last row with data in a range',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: false,
+				idempotentHint: false,
+			},
 		},
 		async ({spreadsheetId, range, values, valueInputOption, insertDataOption, includeValuesInResponse}) => {
 			const params = new URLSearchParams({

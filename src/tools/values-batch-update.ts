@@ -38,6 +38,11 @@ export function registerValuesBatchUpdate(server: McpServer, config: Config): vo
 			description: 'Write cell values to multiple ranges in a single request',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: true,
+				idempotentHint: true,
+			},
 		},
 		async ({spreadsheetId, data, valueInputOption, includeValuesInResponse}) => {
 			const result = await makeSheetsApiCall(

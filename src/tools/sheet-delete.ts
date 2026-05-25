@@ -23,6 +23,11 @@ export function registerSheetDelete(server: McpServer, config: Config): void {
 			description: 'Delete a sheet (tab) from a spreadsheet',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: true,
+				idempotentHint: true,
+			},
 		},
 		async ({spreadsheetId, sheetId}) => {
 			await makeSheetsApiCall(

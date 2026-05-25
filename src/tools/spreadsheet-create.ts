@@ -31,6 +31,11 @@ export function registerSpreadsheetCreate(server: McpServer, config: Config): vo
 			description: 'Create a new Google Sheets spreadsheet',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: false,
+				idempotentHint: false,
+			},
 		},
 		async ({title, sheets}) => {
 			const body: Record<string, unknown> = {

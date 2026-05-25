@@ -34,6 +34,11 @@ export function registerValuesUpdate(server: McpServer, config: Config): void {
 			description: 'Write cell values to a spreadsheet range (overwrites existing data)',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: true,
+				idempotentHint: true,
+			},
 		},
 		async ({spreadsheetId, range, values, valueInputOption, includeValuesInResponse}) => {
 			const params = new URLSearchParams({
