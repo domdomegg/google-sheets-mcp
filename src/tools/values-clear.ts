@@ -23,6 +23,11 @@ export function registerValuesClear(server: McpServer, config: Config): void {
 			description: 'Clear cell values from a range (keeps formatting)',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: true,
+				idempotentHint: true,
+			},
 		},
 		async ({spreadsheetId, range}) => {
 			const encodedRange = encodeURIComponent(range);

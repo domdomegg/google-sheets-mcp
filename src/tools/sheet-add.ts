@@ -27,6 +27,11 @@ export function registerSheetAdd(server: McpServer, config: Config): void {
 			description: 'Add a new sheet (tab) to a spreadsheet',
 			inputSchema,
 			outputSchema,
+			annotations: {
+				readOnlyHint: false,
+				destructiveHint: false,
+				idempotentHint: false,
+			},
 		},
 		async ({spreadsheetId, title, index, rowCount, columnCount}) => {
 			const sheetProperties: Record<string, unknown> = {title};
